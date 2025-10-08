@@ -1,0 +1,13 @@
+from matplotlib import pyplot
+import pandas
+df = pandas.read_csv('C:/Users/Admin/Downloads/iris.csv')
+colors = {'Setosa':'red', 'Versicolor':'green', 'Virginica':'blue'}
+grouped = df.groupby('species')
+fig, ax = pyplot.subplots(1,1)
+for key, group in grouped:
+    group.plot(ax=ax, kind='scatter', x='petal.length', y='petal.width',
+label=key, color=colors[key])
+ax.set_title("Scatter Plot")
+ax.set_xlabel('Petal Length')
+ax.set_ylabel('Petal Width')
+pyplot.show()
